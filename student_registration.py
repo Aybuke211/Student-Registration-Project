@@ -10,7 +10,7 @@ def submitdata():
     stdgender = e4.get()
     stdclass = e5.get()
     #stdcourse = e6.get()
-    mysqldb = mysql.connector.connect(host="localhost",user="root",password="0651Aybuke0651",database="student_course")
+    mysqldb = mysql.connector.connect(host="localhost",user="root",password="",database="student_course")
     mycursor = mysqldb.cursor()
 
     try:
@@ -36,7 +36,7 @@ global e2
 global e3
 global e4
 global e5
-#global e6
+
 
 label1 = Label(root, text= "First Name")
 label1.grid(row=0, column=0)
@@ -48,8 +48,7 @@ label4= Label(root, text= "Gender")
 label4.grid(row=3, column=0)
 label5= Label(root, text= "Class")
 label5.grid(row=4, column=0)
-#label6= Label(root, text= "Course")
-#label6.grid(row=5, column=0)
+
 
 
 e1 = Entry(root)
@@ -62,8 +61,7 @@ e4 = Entry(root)
 e4.grid(row=3, column=1)
 e5 = Entry(root)
 e5.grid(row=4, column=1)
-#e6 = Entry(root)
-#e6.grid(row=5, column=1)
+
 
 Button(root, text="ADD", command=submitdata, height=3, width=13).place(x=10, y=180)
 root.mainloop()
