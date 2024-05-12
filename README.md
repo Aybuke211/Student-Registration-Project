@@ -1,2 +1,2 @@
 # Student-Registration-Project
-Student-Course Registration System With Python Tkinter
+Student-Course Registration System by using Python Tkinter and Mysql
