@@ -8,10 +8,10 @@ CREATE TABLE Students(student_id  INT auto_increment primary KEY,
                       class INT); 
                       
 CREATE TABLE Courses(
-					course_id INT auto_increment primary key,
-					course_name VARCHAR(50),
-					instructor VARCHAR(50),
-					hours INT);
+			course_id INT auto_increment primary key,
+			course_name VARCHAR(50),
+			instructor VARCHAR(50),
+			hours INT);
 		
 CREATE TABLE student_courses (
     registration_id INT AUTO_INCREMENT PRIMARY KEY,
