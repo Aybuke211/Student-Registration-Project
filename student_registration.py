@@ -10,7 +10,7 @@ def submitdata():
     stdgender = e4.get()
     stdclass = e5.get()
     stdcourse_id = e6.get()
-    mysqldb = mysql.connector.connect(host="localhost",user="root",password="0651Aybuke0651",database="student_course")
+    mysqldb = mysql.connector.connect(host="localhost",user="root",password="",database="student_course")
     mycursor = mysqldb.cursor()
 
     try:
