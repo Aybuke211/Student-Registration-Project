@@ -9,8 +9,8 @@ def submitdata():
     stdbirth = e3.get()
     stdgender = e4.get()
     stdclass = e5.get()
-    #stdcourse = e6.get()
-    mysqldb = mysql.connector.connect(host="localhost",user="root",password="",database="student_course")
+    stdcourse_id = e6.get()
+    mysqldb = mysql.connector.connect(host="localhost",user="root",password="0651Aybuke0651",database="student_course")
     mycursor = mysqldb.cursor()
 
     try:
@@ -19,6 +19,24 @@ def submitdata():
         mycursor.execute(sql,val)
         mysqldb.commit()
         messagebox.showinfo("information", "Record inserted successfully :)")
+
+        std_id = mycursor.lastrowid
+        print(std_id)
+        mycursor.execute("SELECT course_id FROM Courses")
+        courses = mycursor.fetchall()
+        print(courses)
+        for course in courses:
+            if int(stdcourse_id) == course[0]:
+                sql = "INSERT INTO student_courses (student_id, course_id) VALUES (%s, %s)"
+                val = (std_id, stdcourse_id)
+                mycursor.execute(sql, val)
+                mysqldb.commit()
+                messagebox.showinfo("Information", "Student enrolled in course successfully :)")
+                break
+            print(course[0])
+            print(stdcourse_id)
+        else:
+            messagebox.showerror("Error", "Invalid course id. Please enter a valid course id.")
 
     except Exception as e:
         print (e)
@@ -36,7 +54,7 @@ global e2
 global e3
 global e4
 global e5
-
+global e6
 
 label1 = Label(root, text= "First Name")
 label1.grid(row=0, column=0)
@@ -48,7 +66,8 @@ label4= Label(root, text= "Gender")
 label4.grid(row=3, column=0)
 label5= Label(root, text= "Class")
 label5.grid(row=4, column=0)
-
+label6= Label(root, text= "Course id")
+label6.grid(row=5, column=0)
 
 
 e1 = Entry(root)
@@ -61,7 +80,8 @@ e4 = Entry(root)
 e4.grid(row=3, column=1)
 e5 = Entry(root)
 e5.grid(row=4, column=1)
-
+e6 = Entry(root)
+e6.grid(row=5, column=1)
 
 Button(root, text="ADD", command=submitdata, height=3, width=13).place(x=10, y=180)
 root.mainloop()
